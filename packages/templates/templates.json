@@ -1,0 +1,3383 @@
+[
+ {
+  "id": "commercial",
+  "sector": "commercial",
+  "name_ar": "المشروعات التجارية والمحلات",
+  "name_en": "Retail & trading",
+  "icon": "fa-store",
+  "image": "commercial.jpg",
+  "definition": {
+   "description_ar": "محلات التجزئة والجملة والسوبر ماركت. يركز على المساحة وحركة العملاء ومتوسط الفاتورة ومعدل دوران المخزون.",
+   "fields": [
+    {
+     "key": "areaSqm",
+     "label_ar": "مساحة المحل",
+     "label_en": "Store area",
+     "type": "number",
+     "required": true,
+     "unit": "م²"
+    },
+    {
+     "key": "dailyCustomers",
+     "label_ar": "متوسط عدد العملاء يوميًا",
+     "label_en": "Daily customers",
+     "type": "number",
+     "required": true,
+     "unit": "عميل"
+    },
+    {
+     "key": "avgBasket",
+     "label_ar": "متوسط قيمة الفاتورة",
+     "label_en": "Average basket",
+     "type": "number",
+     "required": true,
+     "unit": "عملة"
+    },
+    {
+     "key": "operatingDays",
+     "label_ar": "أيام العمل سنويًا",
+     "label_en": "Operating days",
+     "type": "number",
+     "required": true,
+     "unit": "يوم"
+    },
+    {
+     "key": "grossMarkupPct",
+     "label_ar": "هامش الربح على سعر الشراء",
+     "label_en": "Markup on cost",
+     "type": "number",
+     "required": false,
+     "unit": "%"
+    }
+   ],
+   "revenueHelper": {
+    "volumeFrom": [
+     "dailyCustomers",
+     "operatingDays"
+    ],
+    "priceFrom": "avgBasket",
+    "unit": "فاتورة",
+    "costFromMarkup": "grossMarkupPct"
+   },
+   "suggested": {
+    "investment": [
+     {
+      "name": "ديكورات وتجهيزات المحل",
+      "category": "furniture",
+      "usefulLife": 5
+     },
+     {
+      "name": "ثلاجات وأرفف",
+      "category": "equipment",
+      "usefulLife": 7
+     },
+     {
+      "name": "نظام نقاط البيع POS",
+      "category": "technology",
+      "usefulLife": 3
+     },
+     {
+      "name": "مخزون أولي (يُدرج ضمن رأس المال العامل)",
+      "category": "other",
+      "usefulLife": 0
+     },
+     {
+      "name": "رخص وتأسيس",
+      "category": "license",
+      "usefulLife": 0
+     }
+    ],
+    "opex": [
+     {
+      "name": "إيجار المحل",
+      "costType": "fixed"
+     },
+     {
+      "name": "كهرباء ومياه",
+      "costType": "fixed"
+     },
+     {
+      "name": "تسويق",
+      "costType": "fixed"
+     },
+     {
+      "name": "عمولة الدفع الإلكتروني",
+      "costType": "variable_pct"
+     },
+     {
+      "name": "هالك وفاقد بضاعة",
+      "costType": "variable_pct"
+     }
+    ],
+    "staff": [
+     {
+      "role": "مدير محل"
+     },
+     {
+      "role": "كاشير"
+     },
+     {
+      "role": "عامل رفوف"
+     }
+    ],
+    "revenue": [
+     {
+      "name": "مبيعات تجزئة",
+      "unit": "فاتورة"
+     }
+    ]
+   },
+   "kpis": [
+    "npv",
+    "irrPct",
+    "paybackYears",
+    "breakEvenRevenue",
+    "grossMarginPct",
+    "netMarginPct",
+    "roiPct",
+    "inventoryTurnover",
+    "salesPerSqm"
+   ],
+   "risks": [
+    "تقلب أسعار الموردين",
+    "منافسة السلاسل الكبرى",
+    "انخفاض القوة الشرائية",
+    "سرقة وفاقد المخزون",
+    "تغير موقع الحركة التجارية"
+   ],
+   "reportSections": [
+    "cover",
+    "project",
+    "executive",
+    "description",
+    "market",
+    "competitors",
+    "technical",
+    "operational",
+    "management",
+    "marketing",
+    "legal",
+    "investment",
+    "opex",
+    "revenue",
+    "statements",
+    "metrics",
+    "scenarios",
+    "sensitivity",
+    "risks",
+    "implementation",
+    "recommendations",
+    "sources",
+    "assumptions",
+    "disclaimer"
+   ],
+   "dataSources": [
+    "capmas",
+    "cbe",
+    "gafi",
+    "eta",
+    "msmeda",
+    "worldbank"
+   ],
+   "validations": [
+    "متوسط الفاتورة > 0",
+    "أيام العمل ≤ 365"
+   ]
+  },
+  "sort_order": 0
+ },
+ {
+  "id": "restaurant",
+  "sector": "food_service",
+  "name_ar": "المطاعم والكافيهات",
+  "name_en": "Restaurants & cafés",
+  "icon": "fa-utensils",
+  "image": "hero1.jpg",
+  "definition": {
+   "description_ar": "يعتمد على عدد المقاعد ومعدل دوران الطاولات ومتوسط الفاتورة ونسبة تكلفة الطعام (Food Cost).",
+   "fields": [
+    {
+     "key": "seats",
+     "label_ar": "عدد المقاعد",
+     "label_en": "Seats",
+     "type": "number",
+     "required": true,
+     "unit": "مقعد"
+    },
+    {
+     "key": "turnsPerDay",
+     "label_ar": "دوران الطاولة يوميًا",
+     "label_en": "Table turns/day",
+     "type": "number",
+     "required": true,
+     "unit": "مرة"
+    },
+    {
+     "key": "occupancyPct",
+     "label_ar": "متوسط نسبة الإشغال",
+     "label_en": "Average occupancy",
+     "type": "number",
+     "required": true,
+     "unit": "%"
+    },
+    {
+     "key": "operatingDays",
+     "label_ar": "أيام العمل سنويًا",
+     "label_en": "Operating days",
+     "type": "number",
+     "required": true,
+     "unit": "يوم"
+    },
+    {
+     "key": "avgTicket",
+     "label_ar": "متوسط فاتورة الفرد",
+     "label_en": "Average ticket per guest",
+     "type": "number",
+     "required": true,
+     "unit": "عملة"
+    },
+    {
+     "key": "foodCostPct",
+     "label_ar": "نسبة تكلفة الطعام من السعر",
+     "label_en": "Food cost %",
+     "type": "number",
+     "required": true,
+     "unit": "%"
+    },
+    {
+     "key": "deliverySharePct",
+     "label_ar": "نسبة مبيعات التوصيل",
+     "label_en": "Delivery share",
+     "type": "number",
+     "required": false,
+     "unit": "%"
+    }
+   ],
+   "revenueHelper": {
+    "volumeFrom": [
+     "seats",
+     "turnsPerDay",
+     "operatingDays"
+    ],
+    "volumePctFrom": "occupancyPct",
+    "priceFrom": "avgTicket",
+    "unit": "زائر",
+    "costPctFrom": "foodCostPct"
+   },
+   "suggested": {
+    "investment": [
+     {
+      "name": "معدات المطبخ",
+      "category": "equipment",
+      "usefulLife": 7
+     },
+     {
+      "name": "أثاث وديكور الصالة",
+      "category": "furniture",
+      "usefulLife": 5
+     },
+     {
+      "name": "تجهيزات وتشطيبات",
+      "category": "building",
+      "usefulLife": 10
+     },
+     {
+      "name": "أنظمة POS وكاميرات",
+      "category": "technology",
+      "usefulLife": 3
+     },
+     {
+      "name": "رخص وسجل صحي",
+      "category": "license",
+      "usefulLife": 0
+     }
+    ],
+    "opex": [
+     {
+      "name": "إيجار",
+      "costType": "fixed"
+     },
+     {
+      "name": "غاز وكهرباء ومياه",
+      "costType": "fixed"
+     },
+     {
+      "name": "عمولة تطبيقات التوصيل",
+      "costType": "variable_pct"
+     },
+     {
+      "name": "تسويق وسوشيال ميديا",
+      "costType": "fixed"
+     },
+     {
+      "name": "صيانة",
+      "costType": "fixed"
+     }
+    ],
+    "staff": [
+     {
+      "role": "شيف رئيسي"
+     },
+     {
+      "role": "مساعد شيف"
+     },
+     {
+      "role": "ويتر"
+     },
+     {
+      "role": "كاشير"
+     },
+     {
+      "role": "عامل نظافة"
+     }
+    ],
+    "revenue": [
+     {
+      "name": "وجبات ومشروبات",
+      "unit": "زائر"
+     }
+    ]
+   },
+   "kpis": [
+    "npv",
+    "irrPct",
+    "paybackYears",
+    "breakEvenRevenue",
+    "grossMarginPct",
+    "netMarginPct",
+    "roiPct",
+    "revPerSeat",
+    "foodCostPct"
+   ],
+   "risks": [
+    "ارتفاع أسعار الخامات الغذائية",
+    "اشتراطات سلامة الغذاء",
+    "تقلب الإقبال الموسمي",
+    "الاعتماد على تطبيقات التوصيل",
+    "دوران العمالة"
+   ],
+   "reportSections": [
+    "cover",
+    "project",
+    "executive",
+    "description",
+    "market",
+    "competitors",
+    "technical",
+    "operational",
+    "management",
+    "marketing",
+    "legal",
+    "investment",
+    "opex",
+    "revenue",
+    "statements",
+    "metrics",
+    "scenarios",
+    "sensitivity",
+    "risks",
+    "implementation",
+    "recommendations",
+    "sources",
+    "assumptions",
+    "disclaimer"
+   ],
+   "dataSources": [
+    "capmas",
+    "cbe",
+    "gafi",
+    "eta",
+    "msmeda",
+    "worldbank",
+    "nfsa"
+   ],
+   "validations": [
+    "نسبة الإشغال ≤ 100%",
+    "تكلفة الطعام < 100%"
+   ]
+  },
+  "sort_order": 1
+ },
+ {
+  "id": "ecommerce",
+  "sector": "digital",
+  "name_ar": "التجارة الإلكترونية",
+  "name_en": "E-commerce",
+  "icon": "fa-cart-shopping",
+  "image": "tech.jpg",
+  "definition": {
+   "description_ar": "متاجر إلكترونية: الزيارات ومعدل التحويل ومتوسط الطلب وتكلفة الاستحواذ على العميل والشحن والمرتجعات.",
+   "fields": [
+    {
+     "key": "monthlyVisitors",
+     "label_ar": "الزيارات الشهرية",
+     "label_en": "Monthly visitors",
+     "type": "number",
+     "required": true,
+     "unit": "زيارة"
+    },
+    {
+     "key": "conversionPct",
+     "label_ar": "معدل التحويل",
+     "label_en": "Conversion rate",
+     "type": "number",
+     "required": true,
+     "unit": "%"
+    },
+    {
+     "key": "avgOrderValue",
+     "label_ar": "متوسط قيمة الطلب",
+     "label_en": "Average order value",
+     "type": "number",
+     "required": true,
+     "unit": "عملة"
+    },
+    {
+     "key": "cogsPct",
+     "label_ar": "تكلفة البضاعة من السعر",
+     "label_en": "COGS %",
+     "type": "number",
+     "required": true,
+     "unit": "%"
+    },
+    {
+     "key": "returnsPct",
+     "label_ar": "نسبة المرتجعات",
+     "label_en": "Returns",
+     "type": "number",
+     "required": false,
+     "unit": "%"
+    },
+    {
+     "key": "cac",
+     "label_ar": "تكلفة الاستحواذ على العميل",
+     "label_en": "CAC",
+     "type": "number",
+     "required": false,
+     "unit": "عملة"
+    }
+   ],
+   "revenueHelper": {
+    "volumeFrom": [
+     "monthlyVisitors"
+    ],
+    "volumeMultiplier": 12,
+    "volumePctFrom": "conversionPct",
+    "priceFrom": "avgOrderValue",
+    "unit": "طلب",
+    "costPctFrom": "cogsPct",
+    "returnsFrom": "returnsPct"
+   },
+   "suggested": {
+    "investment": [
+     {
+      "name": "تطوير المتجر والمنصة",
+      "category": "technology",
+      "usefulLife": 3
+     },
+     {
+      "name": "أجهزة ومعدات مكتبية",
+      "category": "equipment",
+      "usefulLife": 5
+     },
+     {
+      "name": "مخزون أولي",
+      "category": "other",
+      "usefulLife": 0
+     },
+     {
+      "name": "تسجيل وعلامة تجارية",
+      "category": "license",
+      "usefulLife": 0
+     }
+    ],
+    "opex": [
+     {
+      "name": "استضافة واشتراكات برمجية",
+      "costType": "fixed"
+     },
+     {
+      "name": "إعلانات رقمية",
+      "costType": "fixed"
+     },
+     {
+      "name": "شحن وتوصيل",
+      "costType": "variable_pct"
+     },
+     {
+      "name": "عمولات بوابة الدفع",
+      "costType": "variable_pct"
+     },
+     {
+      "name": "مخزن",
+      "costType": "fixed"
+     }
+    ],
+    "staff": [
+     {
+      "role": "مدير متجر"
+     },
+     {
+      "role": "مسؤول تسويق رقمي"
+     },
+     {
+      "role": "خدمة عملاء"
+     },
+     {
+      "role": "أمين مخزن"
+     }
+    ],
+    "revenue": [
+     {
+      "name": "طلبات أونلاين",
+      "unit": "طلب"
+     }
+    ]
+   },
+   "kpis": [
+    "npv",
+    "irrPct",
+    "paybackYears",
+    "breakEvenRevenue",
+    "grossMarginPct",
+    "netMarginPct",
+    "roiPct",
+    "cac",
+    "ltv",
+    "conversionPct"
+   ],
+   "risks": [
+    "ارتفاع تكلفة الإعلانات",
+    "المرتجعات والدفع عند الاستلام",
+    "المنافسة السعرية",
+    "الاعتماد على منصات خارجية",
+    "أمن المعلومات"
+   ],
+   "reportSections": [
+    "cover",
+    "project",
+    "executive",
+    "description",
+    "market",
+    "competitors",
+    "technical",
+    "operational",
+    "management",
+    "marketing",
+    "legal",
+    "investment",
+    "opex",
+    "revenue",
+    "statements",
+    "metrics",
+    "scenarios",
+    "sensitivity",
+    "risks",
+    "implementation",
+    "recommendations",
+    "sources",
+    "assumptions",
+    "disclaimer"
+   ],
+   "dataSources": [
+    "capmas",
+    "cbe",
+    "gafi",
+    "eta",
+    "msmeda",
+    "worldbank",
+    "itc"
+   ],
+   "validations": [
+    "معدل التحويل ≤ 100%"
+   ]
+  },
+  "sort_order": 2
+ },
+ {
+  "id": "factory",
+  "sector": "industrial",
+  "name_ar": "المصانع وخطوط الإنتاج",
+  "name_en": "Factories & production lines",
+  "icon": "fa-industry",
+  "image": "economic.jpg",
+  "definition": {
+   "description_ar": "يعتمد على الطاقة الإنتاجية ونسبة التشغيل والهالك وتكلفة الوحدة والصيانة والطاقة.",
+   "fields": [
+    {
+     "key": "dailyCapacity",
+     "label_ar": "الطاقة الإنتاجية اليومية",
+     "label_en": "Daily capacity",
+     "type": "number",
+     "required": true,
+     "unit": "وحدة"
+    },
+    {
+     "key": "workingDays",
+     "label_ar": "أيام التشغيل سنويًا",
+     "label_en": "Working days",
+     "type": "number",
+     "required": true,
+     "unit": "يوم"
+    },
+    {
+     "key": "utilizationPct",
+     "label_ar": "نسبة التشغيل المتوقعة",
+     "label_en": "Utilization",
+     "type": "number",
+     "required": true,
+     "unit": "%"
+    },
+    {
+     "key": "wastePct",
+     "label_ar": "نسبة الهالك",
+     "label_en": "Waste",
+     "type": "number",
+     "required": true,
+     "unit": "%"
+    },
+    {
+     "key": "unitPrice",
+     "label_ar": "سعر بيع الوحدة",
+     "label_en": "Unit price",
+     "type": "number",
+     "required": true,
+     "unit": "عملة"
+    },
+    {
+     "key": "unitMaterialCost",
+     "label_ar": "تكلفة الخامات للوحدة",
+     "label_en": "Material cost per unit",
+     "type": "number",
+     "required": true,
+     "unit": "عملة"
+    },
+    {
+     "key": "shifts",
+     "label_ar": "عدد الورديات",
+     "label_en": "Shifts",
+     "type": "number",
+     "required": false,
+     "unit": "وردية"
+    },
+    {
+     "key": "powerKw",
+     "label_ar": "القدرة الكهربائية",
+     "label_en": "Power load",
+     "type": "number",
+     "required": false,
+     "unit": "ك.و"
+    }
+   ],
+   "revenueHelper": {
+    "capacityFrom": [
+     "dailyCapacity",
+     "workingDays"
+    ],
+    "utilizationFrom": "utilizationPct",
+    "wasteFrom": "wastePct",
+    "priceFrom": "unitPrice",
+    "costFrom": "unitMaterialCost",
+    "unit": "وحدة"
+   },
+   "suggested": {
+    "investment": [
+     {
+      "name": "أرض المصنع",
+      "category": "land",
+      "usefulLife": 0
+     },
+     {
+      "name": "مباني وإنشاءات",
+      "category": "building",
+      "usefulLife": 25
+     },
+     {
+      "name": "خطوط إنتاج ومعدات",
+      "category": "equipment",
+      "usefulLife": 10
+     },
+     {
+      "name": "تركيب وتشغيل تجريبي",
+      "category": "installation",
+      "usefulLife": 10
+     },
+     {
+      "name": "مولد ومحولات",
+      "category": "equipment",
+      "usefulLife": 10
+     },
+     {
+      "name": "وسائل نقل",
+      "category": "vehicles",
+      "usefulLife": 5
+     },
+     {
+      "name": "تراخيص وسجل صناعي",
+      "category": "license",
+      "usefulLife": 0
+     },
+     {
+      "name": "مصروفات ما قبل التشغيل",
+      "category": "preoperating",
+      "usefulLife": 0
+     }
+    ],
+    "opex": [
+     {
+      "name": "كهرباء وطاقة",
+      "costType": "fixed"
+     },
+     {
+      "name": "صيانة وقطع غيار",
+      "costType": "fixed"
+     },
+     {
+      "name": "تأمين على الأصول",
+      "costType": "fixed"
+     },
+     {
+      "name": "نقل وتوزيع",
+      "costType": "variable_pct"
+     },
+     {
+      "name": "تعبئة وتغليف",
+      "costType": "variable_pct"
+     },
+     {
+      "name": "مصروفات إدارية",
+      "costType": "fixed"
+     }
+    ],
+    "staff": [
+     {
+      "role": "مدير مصنع"
+     },
+     {
+      "role": "مهندس إنتاج"
+     },
+     {
+      "role": "فني صيانة"
+     },
+     {
+      "role": "عامل إنتاج"
+     },
+     {
+      "role": "مراقب جودة"
+     },
+     {
+      "role": "محاسب"
+     }
+    ],
+    "revenue": [
+     {
+      "name": "منتج رئيسي",
+      "unit": "وحدة"
+     }
+    ]
+   },
+   "kpis": [
+    "npv",
+    "irrPct",
+    "paybackYears",
+    "breakEvenRevenue",
+    "grossMarginPct",
+    "netMarginPct",
+    "roiPct",
+    "breakEvenUtilizationPct",
+    "costPerUnit",
+    "minDscr"
+   ],
+   "risks": [
+    "تذبذب أسعار الخامات وسعر الصرف",
+    "أعطال المعدات",
+    "تأخر التراخيص الصناعية",
+    "انخفاض نسبة التشغيل",
+    "اشتراطات بيئية"
+   ],
+   "reportSections": [
+    "cover",
+    "project",
+    "executive",
+    "description",
+    "market",
+    "competitors",
+    "technical",
+    "operational",
+    "management",
+    "marketing",
+    "legal",
+    "investment",
+    "opex",
+    "revenue",
+    "statements",
+    "metrics",
+    "scenarios",
+    "sensitivity",
+    "risks",
+    "implementation",
+    "recommendations",
+    "sources",
+    "assumptions",
+    "disclaimer"
+   ],
+   "dataSources": [
+    "capmas",
+    "cbe",
+    "gafi",
+    "eta",
+    "msmeda",
+    "worldbank",
+    "ida"
+   ],
+   "validations": [
+    "الهالك < 100%",
+    "نسبة التشغيل ≤ 100%"
+   ]
+  },
+  "sort_order": 3
+ },
+ {
+  "id": "food_factory",
+  "sector": "industrial",
+  "name_ar": "مصانع الأغذية",
+  "name_en": "Food processing",
+  "icon": "fa-bowl-food",
+  "image": "sectors.jpg",
+  "definition": {
+   "description_ar": "مصانع الأغذية: معدل التحويل من الخامات للمنتج، الموسمية، سلامة الغذاء، التبريد ومدة الصلاحية.",
+   "fields": [
+    {
+     "key": "dailyCapacity",
+     "label_ar": "الطاقة الإنتاجية اليومية",
+     "label_en": "Daily capacity",
+     "type": "number",
+     "required": true,
+     "unit": "كجم"
+    },
+    {
+     "key": "workingDays",
+     "label_ar": "أيام التشغيل",
+     "label_en": "Working days",
+     "type": "number",
+     "required": true,
+     "unit": "يوم"
+    },
+    {
+     "key": "utilizationPct",
+     "label_ar": "نسبة التشغيل",
+     "label_en": "Utilization",
+     "type": "number",
+     "required": true,
+     "unit": "%"
+    },
+    {
+     "key": "yieldPct",
+     "label_ar": "نسبة التصافي من الخامات",
+     "label_en": "Yield",
+     "type": "number",
+     "required": true,
+     "unit": "%"
+    },
+    {
+     "key": "wastePct",
+     "label_ar": "الهالك",
+     "label_en": "Waste",
+     "type": "number",
+     "required": false,
+     "unit": "%"
+    },
+    {
+     "key": "unitPrice",
+     "label_ar": "سعر البيع للكجم",
+     "label_en": "Price per kg",
+     "type": "number",
+     "required": true,
+     "unit": "عملة"
+    },
+    {
+     "key": "unitMaterialCost",
+     "label_ar": "تكلفة الخامات للكجم منتج",
+     "label_en": "Material cost per kg",
+     "type": "number",
+     "required": true,
+     "unit": "عملة"
+    },
+    {
+     "key": "shelfLifeDays",
+     "label_ar": "مدة الصلاحية",
+     "label_en": "Shelf life",
+     "type": "number",
+     "required": false,
+     "unit": "يوم"
+    }
+   ],
+   "revenueHelper": {
+    "capacityFrom": [
+     "dailyCapacity",
+     "workingDays"
+    ],
+    "utilizationFrom": "utilizationPct",
+    "wasteFrom": "wastePct",
+    "priceFrom": "unitPrice",
+    "costFrom": "unitMaterialCost",
+    "unit": "كجم"
+   },
+   "suggested": {
+    "investment": [
+     {
+      "name": "أرض",
+      "category": "land",
+      "usefulLife": 0
+     },
+     {
+      "name": "مبنى بمواصفات غذائية",
+      "category": "building",
+      "usefulLife": 25
+     },
+     {
+      "name": "خط تصنيع",
+      "category": "equipment",
+      "usefulLife": 10
+     },
+     {
+      "name": "غرف تبريد وتجميد",
+      "category": "equipment",
+      "usefulLife": 10
+     },
+     {
+      "name": "معمل جودة",
+      "category": "equipment",
+      "usefulLife": 7
+     },
+     {
+      "name": "سيارات مبردة",
+      "category": "vehicles",
+      "usefulLife": 5
+     },
+     {
+      "name": "تراخيص سلامة الغذاء",
+      "category": "license",
+      "usefulLife": 0
+     }
+    ],
+    "opex": [
+     {
+      "name": "كهرباء وتبريد",
+      "costType": "fixed"
+     },
+     {
+      "name": "مواد تعبئة",
+      "costType": "variable_pct"
+     },
+     {
+      "name": "تحاليل وشهادات جودة",
+      "costType": "fixed"
+     },
+     {
+      "name": "توزيع",
+      "costType": "variable_pct"
+     },
+     {
+      "name": "صيانة",
+      "costType": "fixed"
+     }
+    ],
+    "staff": [
+     {
+      "role": "مدير مصنع"
+     },
+     {
+      "role": "مهندس أغذية"
+     },
+     {
+      "role": "أخصائي جودة"
+     },
+     {
+      "role": "عامل إنتاج"
+     },
+     {
+      "role": "سائق"
+     }
+    ],
+    "revenue": [
+     {
+      "name": "منتج غذائي",
+      "unit": "كجم"
+     }
+    ]
+   },
+   "kpis": [
+    "npv",
+    "irrPct",
+    "paybackYears",
+    "breakEvenRevenue",
+    "grossMarginPct",
+    "netMarginPct",
+    "roiPct",
+    "yieldPct",
+    "costPerUnit"
+   ],
+   "risks": [
+    "اشتراطات الهيئة القومية لسلامة الغذاء",
+    "موسمية الخامات",
+    "انتهاء الصلاحية والمرتجعات",
+    "انقطاع سلسلة التبريد"
+   ],
+   "reportSections": [
+    "cover",
+    "project",
+    "executive",
+    "description",
+    "market",
+    "competitors",
+    "technical",
+    "operational",
+    "management",
+    "marketing",
+    "legal",
+    "investment",
+    "opex",
+    "revenue",
+    "statements",
+    "metrics",
+    "scenarios",
+    "sensitivity",
+    "risks",
+    "implementation",
+    "recommendations",
+    "sources",
+    "assumptions",
+    "disclaimer"
+   ],
+   "dataSources": [
+    "capmas",
+    "cbe",
+    "gafi",
+    "eta",
+    "msmeda",
+    "worldbank",
+    "nfsa",
+    "fao"
+   ],
+   "validations": [
+    "نسبة التصافي ≤ 100%"
+   ]
+  },
+  "sort_order": 4
+ },
+ {
+  "id": "packaging",
+  "sector": "industrial",
+  "name_ar": "التعبئة والتغليف",
+  "name_en": "Packaging",
+  "icon": "fa-box",
+  "image": "sectors.jpg",
+  "definition": {
+   "description_ar": "مشروعات التعبئة والتغليف وخدمات التعبئة للغير: سرعة الماكينة، تكلفة الخامة للعبوة، الهالك.",
+   "fields": [
+    {
+     "key": "unitsPerHour",
+     "label_ar": "إنتاجية الماكينة/ساعة",
+     "label_en": "Units/hour",
+     "type": "number",
+     "required": true,
+     "unit": "عبوة"
+    },
+    {
+     "key": "hoursPerDay",
+     "label_ar": "ساعات التشغيل يوميًا",
+     "label_en": "Hours/day",
+     "type": "number",
+     "required": true,
+     "unit": "ساعة"
+    },
+    {
+     "key": "workingDays",
+     "label_ar": "أيام التشغيل",
+     "label_en": "Working days",
+     "type": "number",
+     "required": true,
+     "unit": "يوم"
+    },
+    {
+     "key": "utilizationPct",
+     "label_ar": "نسبة التشغيل",
+     "label_en": "Utilization",
+     "type": "number",
+     "required": true,
+     "unit": "%"
+    },
+    {
+     "key": "wastePct",
+     "label_ar": "الهالك",
+     "label_en": "Waste",
+     "type": "number",
+     "required": false,
+     "unit": "%"
+    },
+    {
+     "key": "unitPrice",
+     "label_ar": "سعر العبوة/الخدمة",
+     "label_en": "Price per unit",
+     "type": "number",
+     "required": true,
+     "unit": "عملة"
+    },
+    {
+     "key": "unitMaterialCost",
+     "label_ar": "تكلفة خامات العبوة",
+     "label_en": "Material per unit",
+     "type": "number",
+     "required": true,
+     "unit": "عملة"
+    }
+   ],
+   "revenueHelper": {
+    "capacityFrom": [
+     "unitsPerHour",
+     "hoursPerDay",
+     "workingDays"
+    ],
+    "utilizationFrom": "utilizationPct",
+    "wasteFrom": "wastePct",
+    "priceFrom": "unitPrice",
+    "costFrom": "unitMaterialCost",
+    "unit": "عبوة"
+   },
+   "suggested": {
+    "investment": [
+     {
+      "name": "ماكينات تعبئة",
+      "category": "equipment",
+      "usefulLife": 10
+     },
+     {
+      "name": "ماكينات طباعة وتغليف",
+      "category": "equipment",
+      "usefulLife": 10
+     },
+     {
+      "name": "تجهيز العنبر",
+      "category": "building",
+      "usefulLife": 20
+     },
+     {
+      "name": "تركيب",
+      "category": "installation",
+      "usefulLife": 10
+     }
+    ],
+    "opex": [
+     {
+      "name": "كهرباء",
+      "costType": "fixed"
+     },
+     {
+      "name": "إيجار عنبر",
+      "costType": "fixed"
+     },
+     {
+      "name": "صيانة",
+      "costType": "fixed"
+     },
+     {
+      "name": "نقل",
+      "costType": "variable_pct"
+     }
+    ],
+    "staff": [
+     {
+      "role": "مشرف إنتاج"
+     },
+     {
+      "role": "فني ماكينات"
+     },
+     {
+      "role": "عامل تعبئة"
+     }
+    ],
+    "revenue": [
+     {
+      "name": "عبوات",
+      "unit": "عبوة"
+     }
+    ]
+   },
+   "kpis": [
+    "npv",
+    "irrPct",
+    "paybackYears",
+    "breakEvenRevenue",
+    "grossMarginPct",
+    "netMarginPct",
+    "roiPct",
+    "breakEvenUtilizationPct"
+   ],
+   "risks": [
+    "تذبذب أسعار البلاستيك والكرتون",
+    "الاعتماد على عملاء محدودين",
+    "أعطال الماكينات"
+   ],
+   "reportSections": [
+    "cover",
+    "project",
+    "executive",
+    "description",
+    "market",
+    "competitors",
+    "technical",
+    "operational",
+    "management",
+    "marketing",
+    "legal",
+    "investment",
+    "opex",
+    "revenue",
+    "statements",
+    "metrics",
+    "scenarios",
+    "sensitivity",
+    "risks",
+    "implementation",
+    "recommendations",
+    "sources",
+    "assumptions",
+    "disclaimer"
+   ],
+   "dataSources": [
+    "capmas",
+    "cbe",
+    "gafi",
+    "eta",
+    "msmeda",
+    "worldbank",
+    "ida"
+   ],
+   "validations": []
+  },
+  "sort_order": 5
+ },
+ {
+  "id": "agriculture",
+  "sector": "agriculture",
+  "name_ar": "المشروعات الزراعية",
+  "name_en": "Agriculture",
+  "icon": "fa-seedling",
+  "image": "agri.jpg",
+  "definition": {
+   "description_ar": "زراعة المحاصيل والصوب والنخيل: المساحة، الإنتاجية للفدان، المواسم، الري، أسعار البيع عند الحصاد.",
+   "fields": [
+    {
+     "key": "areaFeddan",
+     "label_ar": "المساحة",
+     "label_en": "Area",
+     "type": "number",
+     "required": true,
+     "unit": "فدان"
+    },
+    {
+     "key": "yieldPerFeddan",
+     "label_ar": "الإنتاجية للفدان/الموسم",
+     "label_en": "Yield per feddan",
+     "type": "number",
+     "required": true,
+     "unit": "طن"
+    },
+    {
+     "key": "seasonsPerYear",
+     "label_ar": "عدد المواسم سنويًا",
+     "label_en": "Seasons/year",
+     "type": "number",
+     "required": true,
+     "unit": "موسم"
+    },
+    {
+     "key": "pricePerTon",
+     "label_ar": "سعر بيع الطن",
+     "label_en": "Price per ton",
+     "type": "number",
+     "required": true,
+     "unit": "عملة"
+    },
+    {
+     "key": "costPerTon",
+     "label_ar": "تكلفة مستلزمات الإنتاج للطن",
+     "label_en": "Input cost per ton",
+     "type": "number",
+     "required": true,
+     "unit": "عملة"
+    },
+    {
+     "key": "lossPct",
+     "label_ar": "الفاقد بعد الحصاد",
+     "label_en": "Post-harvest loss",
+     "type": "number",
+     "required": false,
+     "unit": "%"
+    },
+    {
+     "key": "irrigation",
+     "label_ar": "نظام الري",
+     "label_en": "Irrigation",
+     "type": "select",
+     "required": false,
+     "options": [
+      "غمر",
+      "تنقيط",
+      "رش",
+      "محوري"
+     ]
+    }
+   ],
+   "revenueHelper": {
+    "volumeFrom": [
+     "areaFeddan",
+     "yieldPerFeddan",
+     "seasonsPerYear"
+    ],
+    "priceFrom": "pricePerTon",
+    "costFrom": "costPerTon",
+    "wasteFrom": "lossPct",
+    "unit": "طن"
+   },
+   "suggested": {
+    "investment": [
+     {
+      "name": "استصلاح وتجهيز الأرض",
+      "category": "land",
+      "usefulLife": 0
+     },
+     {
+      "name": "شبكة ري",
+      "category": "equipment",
+      "usefulLife": 10
+     },
+     {
+      "name": "صوب زراعية",
+      "category": "building",
+      "usefulLife": 8
+     },
+     {
+      "name": "آبار وطلمبات",
+      "category": "equipment",
+      "usefulLife": 10
+     },
+     {
+      "name": "جرار ومعدات",
+      "category": "vehicles",
+      "usefulLife": 8
+     },
+     {
+      "name": "مخزن ومبرد",
+      "category": "building",
+      "usefulLife": 15
+     }
+    ],
+    "opex": [
+     {
+      "name": "إيجار الأرض",
+      "costType": "fixed"
+     },
+     {
+      "name": "كهرباء/سولار للري",
+      "costType": "fixed"
+     },
+     {
+      "name": "عمالة موسمية",
+      "costType": "variable_pct"
+     },
+     {
+      "name": "نقل وتسويق",
+      "costType": "variable_pct"
+     },
+     {
+      "name": "صيانة",
+      "costType": "fixed"
+     }
+    ],
+    "staff": [
+     {
+      "role": "مهندس زراعي"
+     },
+     {
+      "role": "مشرف مزرعة"
+     },
+     {
+      "role": "عامل زراعي دائم"
+     }
+    ],
+    "revenue": [
+     {
+      "name": "محصول رئيسي",
+      "unit": "طن"
+     }
+    ]
+   },
+   "kpis": [
+    "npv",
+    "irrPct",
+    "paybackYears",
+    "breakEvenRevenue",
+    "grossMarginPct",
+    "netMarginPct",
+    "roiPct",
+    "yieldPerFeddan",
+    "revenuePerFeddan"
+   ],
+   "risks": [
+    "التغيرات المناخية والآفات",
+    "تذبذب أسعار المحاصيل",
+    "توافر المياه",
+    "ارتفاع تكلفة الأسمدة"
+   ],
+   "reportSections": [
+    "cover",
+    "project",
+    "executive",
+    "description",
+    "market",
+    "competitors",
+    "technical",
+    "operational",
+    "management",
+    "marketing",
+    "legal",
+    "investment",
+    "opex",
+    "revenue",
+    "statements",
+    "metrics",
+    "scenarios",
+    "sensitivity",
+    "risks",
+    "implementation",
+    "recommendations",
+    "sources",
+    "assumptions",
+    "disclaimer"
+   ],
+   "dataSources": [
+    "capmas",
+    "cbe",
+    "gafi",
+    "eta",
+    "msmeda",
+    "worldbank",
+    "moa",
+    "fao"
+   ],
+   "validations": []
+  },
+  "sort_order": 6
+ },
+ {
+  "id": "livestock",
+  "sector": "agriculture",
+  "name_ar": "الثروة الحيوانية والداجنة",
+  "name_en": "Livestock & poultry",
+  "icon": "fa-cow",
+  "image": "livestock.jpg",
+  "definition": {
+   "description_ar": "تسمين الماشية والألبان والدواجن والأرانب والاستزراع السمكي ونحل العسل: دورات الإنتاج، معدل النفوق، معامل التحويل الغذائي.",
+   "fields": [
+    {
+     "key": "headCount",
+     "label_ar": "عدد الرؤوس/الطيور في الدورة",
+     "label_en": "Heads per cycle",
+     "type": "number",
+     "required": true,
+     "unit": "رأس"
+    },
+    {
+     "key": "cyclesPerYear",
+     "label_ar": "عدد الدورات سنويًا",
+     "label_en": "Cycles per year",
+     "type": "number",
+     "required": true,
+     "unit": "دورة"
+    },
+    {
+     "key": "mortalityPct",
+     "label_ar": "نسبة النفوق",
+     "label_en": "Mortality",
+     "type": "number",
+     "required": true,
+     "unit": "%"
+    },
+    {
+     "key": "outputPerHead",
+     "label_ar": "الناتج للرأس (وزن/لتر)",
+     "label_en": "Output per head",
+     "type": "number",
+     "required": true,
+     "unit": "كجم"
+    },
+    {
+     "key": "pricePerUnit",
+     "label_ar": "سعر بيع الكجم/اللتر",
+     "label_en": "Price per kg/l",
+     "type": "number",
+     "required": true,
+     "unit": "عملة"
+    },
+    {
+     "key": "feedCostPerUnit",
+     "label_ar": "تكلفة العلف للكجم ناتج",
+     "label_en": "Feed cost per kg",
+     "type": "number",
+     "required": true,
+     "unit": "عملة"
+    },
+    {
+     "key": "fcr",
+     "label_ar": "معامل التحويل الغذائي",
+     "label_en": "FCR",
+     "type": "number",
+     "required": false
+    }
+   ],
+   "revenueHelper": {
+    "volumeFrom": [
+     "headCount",
+     "cyclesPerYear",
+     "outputPerHead"
+    ],
+    "wasteFrom": "mortalityPct",
+    "priceFrom": "pricePerUnit",
+    "costFrom": "feedCostPerUnit",
+    "unit": "كجم"
+   },
+   "suggested": {
+    "investment": [
+     {
+      "name": "حظائر/عنابر/أحواض",
+      "category": "building",
+      "usefulLife": 15
+     },
+     {
+      "name": "معدات تغذية وشرب وتهوية",
+      "category": "equipment",
+      "usefulLife": 8
+     },
+     {
+      "name": "مولد كهرباء",
+      "category": "equipment",
+      "usefulLife": 10
+     },
+     {
+      "name": "شراء القطيع الأم (إن وجد)",
+      "category": "other",
+      "usefulLife": 6
+     },
+     {
+      "name": "تراخيص بيطرية",
+      "category": "license",
+      "usefulLife": 0
+     }
+    ],
+    "opex": [
+     {
+      "name": "أدوية وتحصينات بيطرية",
+      "costType": "variable_pct"
+     },
+     {
+      "name": "كهرباء وتدفئة",
+      "costType": "fixed"
+     },
+     {
+      "name": "نقل",
+      "costType": "variable_pct"
+     },
+     {
+      "name": "نشارة وفرشة",
+      "costType": "variable_pct"
+     },
+     {
+      "name": "صيانة",
+      "costType": "fixed"
+     }
+    ],
+    "staff": [
+     {
+      "role": "طبيب بيطري (جزئي)"
+     },
+     {
+      "role": "مشرف عنبر"
+     },
+     {
+      "role": "عامل"
+     }
+    ],
+    "revenue": [
+     {
+      "name": "لحوم/ألبان/بيض",
+      "unit": "كجم"
+     }
+    ]
+   },
+   "kpis": [
+    "npv",
+    "irrPct",
+    "paybackYears",
+    "breakEvenRevenue",
+    "grossMarginPct",
+    "netMarginPct",
+    "roiPct",
+    "mortalityPct",
+    "fcr"
+   ],
+   "risks": [
+    "الأمراض الوبائية ونفوق القطيع",
+    "ارتفاع أسعار الأعلاف المستوردة",
+    "تذبذب أسعار البيع",
+    "اشتراطات البيئة والصحة"
+   ],
+   "reportSections": [
+    "cover",
+    "project",
+    "executive",
+    "description",
+    "market",
+    "competitors",
+    "technical",
+    "operational",
+    "management",
+    "marketing",
+    "legal",
+    "investment",
+    "opex",
+    "revenue",
+    "statements",
+    "metrics",
+    "scenarios",
+    "sensitivity",
+    "risks",
+    "implementation",
+    "recommendations",
+    "sources",
+    "assumptions",
+    "disclaimer"
+   ],
+   "dataSources": [
+    "capmas",
+    "cbe",
+    "gafi",
+    "eta",
+    "msmeda",
+    "worldbank",
+    "moa",
+    "fao"
+   ],
+   "validations": [
+    "النفوق < 100%"
+   ]
+  },
+  "sort_order": 7
+ },
+ {
+  "id": "realestate",
+  "sector": "real_estate",
+  "name_ar": "المشروعات العقارية",
+  "name_en": "Real estate",
+  "icon": "fa-building",
+  "image": "hero2.jpg",
+  "definition": {
+   "description_ar": "التطوير العقاري والتأجير: مساحات قابلة للبيع/التأجير، سعر المتر، نسبة الإشغال، جدول البيع والإنشاء.",
+   "fields": [
+    {
+     "key": "sellableSqm",
+     "label_ar": "المساحة البيعية/التأجيرية",
+     "label_en": "Sellable/leasable area",
+     "type": "number",
+     "required": true,
+     "unit": "م²"
+    },
+    {
+     "key": "pricePerSqm",
+     "label_ar": "سعر بيع/إيجار المتر سنويًا",
+     "label_en": "Price per m²",
+     "type": "number",
+     "required": true,
+     "unit": "عملة"
+    },
+    {
+     "key": "occupancyPct",
+     "label_ar": "نسبة البيع/الإشغال السنوية",
+     "label_en": "Absorption/occupancy",
+     "type": "number",
+     "required": true,
+     "unit": "%"
+    },
+    {
+     "key": "constructionCostSqm",
+     "label_ar": "تكلفة إنشاء المتر",
+     "label_en": "Construction cost per m²",
+     "type": "number",
+     "required": true,
+     "unit": "عملة"
+    },
+    {
+     "key": "model",
+     "label_ar": "نموذج الإيراد",
+     "label_en": "Revenue model",
+     "type": "select",
+     "required": false,
+     "options": [
+      "بيع",
+      "تأجير",
+      "مختلط"
+     ]
+    }
+   ],
+   "revenueHelper": {
+    "volumeFrom": [
+     "sellableSqm"
+    ],
+    "volumePctFrom": "occupancyPct",
+    "priceFrom": "pricePerSqm",
+    "unit": "م²"
+   },
+   "suggested": {
+    "investment": [
+     {
+      "name": "الأرض",
+      "category": "land",
+      "usefulLife": 0
+     },
+     {
+      "name": "أعمال الإنشاء",
+      "category": "building",
+      "usefulLife": 40
+     },
+     {
+      "name": "تشطيبات ومرافق",
+      "category": "building",
+      "usefulLife": 20
+     },
+     {
+      "name": "تصميمات وإشراف هندسي",
+      "category": "preoperating",
+      "usefulLife": 0
+     },
+     {
+      "name": "تراخيص بناء",
+      "category": "license",
+      "usefulLife": 0
+     }
+    ],
+    "opex": [
+     {
+      "name": "تسويق ومبيعات",
+      "costType": "variable_pct"
+     },
+     {
+      "name": "صيانة وإدارة عقار",
+      "costType": "fixed"
+     },
+     {
+      "name": "تأمين",
+      "costType": "fixed"
+     },
+     {
+      "name": "ضريبة عقارية",
+      "costType": "fixed"
+     }
+    ],
+    "staff": [
+     {
+      "role": "مدير مشروع"
+     },
+     {
+      "role": "مهندس موقع"
+     },
+     {
+      "role": "مسؤول مبيعات"
+     }
+    ],
+    "revenue": [
+     {
+      "name": "وحدات/مساحات",
+      "unit": "م²"
+     }
+    ]
+   },
+   "kpis": [
+    "npv",
+    "irrPct",
+    "paybackYears",
+    "breakEvenRevenue",
+    "grossMarginPct",
+    "netMarginPct",
+    "roiPct",
+    "revenuePerSqm"
+   ],
+   "risks": [
+    "تأخر التراخيص والتنفيذ",
+    "ارتفاع أسعار مواد البناء",
+    "تباطؤ المبيعات",
+    "مخاطر التمويل والفائدة"
+   ],
+   "reportSections": [
+    "cover",
+    "project",
+    "executive",
+    "description",
+    "market",
+    "competitors",
+    "technical",
+    "operational",
+    "management",
+    "marketing",
+    "legal",
+    "investment",
+    "opex",
+    "revenue",
+    "statements",
+    "metrics",
+    "scenarios",
+    "sensitivity",
+    "risks",
+    "implementation",
+    "recommendations",
+    "sources",
+    "assumptions",
+    "disclaimer"
+   ],
+   "dataSources": [
+    "capmas",
+    "cbe",
+    "gafi",
+    "eta",
+    "msmeda",
+    "worldbank"
+   ],
+   "validations": []
+  },
+  "sort_order": 8
+ },
+ {
+  "id": "services",
+  "sector": "services",
+  "name_ar": "المشروعات الخدمية",
+  "name_en": "Services",
+  "icon": "fa-handshake",
+  "image": "idea.jpg",
+  "definition": {
+   "description_ar": "مكاتب الخدمات والصيانة والاستشارات والمغاسل وغيرها: الطاقة الاستيعابية بالساعات أو العملاء.",
+   "fields": [
+    {
+     "key": "serviceCapacityPerDay",
+     "label_ar": "عدد الخدمات الممكن تقديمها يوميًا",
+     "label_en": "Services per day",
+     "type": "number",
+     "required": true,
+     "unit": "خدمة"
+    },
+    {
+     "key": "workingDays",
+     "label_ar": "أيام العمل",
+     "label_en": "Working days",
+     "type": "number",
+     "required": true,
+     "unit": "يوم"
+    },
+    {
+     "key": "utilizationPct",
+     "label_ar": "نسبة الاستغلال",
+     "label_en": "Utilization",
+     "type": "number",
+     "required": true,
+     "unit": "%"
+    },
+    {
+     "key": "avgServicePrice",
+     "label_ar": "متوسط سعر الخدمة",
+     "label_en": "Average service price",
+     "type": "number",
+     "required": true,
+     "unit": "عملة"
+    },
+    {
+     "key": "directCostPerService",
+     "label_ar": "التكلفة المباشرة للخدمة",
+     "label_en": "Direct cost per service",
+     "type": "number",
+     "required": false,
+     "unit": "عملة"
+    }
+   ],
+   "revenueHelper": {
+    "capacityFrom": [
+     "serviceCapacityPerDay",
+     "workingDays"
+    ],
+    "utilizationFrom": "utilizationPct",
+    "priceFrom": "avgServicePrice",
+    "costFrom": "directCostPerService",
+    "unit": "خدمة"
+   },
+   "suggested": {
+    "investment": [
+     {
+      "name": "تجهيز المقر",
+      "category": "furniture",
+      "usefulLife": 5
+     },
+     {
+      "name": "معدات وأدوات",
+      "category": "equipment",
+      "usefulLife": 5
+     },
+     {
+      "name": "أجهزة وبرامج",
+      "category": "technology",
+      "usefulLife": 3
+     },
+     {
+      "name": "تأسيس ورخص",
+      "category": "license",
+      "usefulLife": 0
+     }
+    ],
+    "opex": [
+     {
+      "name": "إيجار",
+      "costType": "fixed"
+     },
+     {
+      "name": "مرافق",
+      "costType": "fixed"
+     },
+     {
+      "name": "تسويق",
+      "costType": "fixed"
+     },
+     {
+      "name": "مستهلكات",
+      "costType": "variable_pct"
+     }
+    ],
+    "staff": [
+     {
+      "role": "مدير"
+     },
+     {
+      "role": "مقدم خدمة/فني"
+     },
+     {
+      "role": "موظف استقبال"
+     }
+    ],
+    "revenue": [
+     {
+      "name": "خدمة",
+      "unit": "خدمة"
+     }
+    ]
+   },
+   "kpis": [
+    "npv",
+    "irrPct",
+    "paybackYears",
+    "breakEvenRevenue",
+    "grossMarginPct",
+    "netMarginPct",
+    "roiPct",
+    "utilizationPct"
+   ],
+   "risks": [
+    "الاعتماد على كفاءات بشرية محددة",
+    "المنافسة السعرية",
+    "تذبذب الطلب"
+   ],
+   "reportSections": [
+    "cover",
+    "project",
+    "executive",
+    "description",
+    "market",
+    "competitors",
+    "technical",
+    "operational",
+    "management",
+    "marketing",
+    "legal",
+    "investment",
+    "opex",
+    "revenue",
+    "statements",
+    "metrics",
+    "scenarios",
+    "sensitivity",
+    "risks",
+    "implementation",
+    "recommendations",
+    "sources",
+    "assumptions",
+    "disclaimer"
+   ],
+   "dataSources": [
+    "capmas",
+    "cbe",
+    "gafi",
+    "eta",
+    "msmeda",
+    "worldbank"
+   ],
+   "validations": []
+  },
+  "sort_order": 9
+ },
+ {
+  "id": "tech",
+  "sector": "digital",
+  "name_ar": "المشروعات التقنية والبرمجية",
+  "name_en": "Technology & software",
+  "icon": "fa-microchip",
+  "image": "tech.jpg",
+  "definition": {
+   "description_ar": "منصات SaaS وتطبيقات ومشروعات برمجية: المشتركون، معدل الانسحاب، سعر الاشتراك، تكلفة البنية السحابية.",
+   "fields": [
+    {
+     "key": "subscribersYear1",
+     "label_ar": "متوسط المشتركين المدفوعين في السنة الأولى",
+     "label_en": "Avg paying subscribers yr1",
+     "type": "number",
+     "required": true,
+     "unit": "مشترك"
+    },
+    {
+     "key": "monthlyPrice",
+     "label_ar": "سعر الاشتراك الشهري",
+     "label_en": "Monthly price",
+     "type": "number",
+     "required": true,
+     "unit": "عملة"
+    },
+    {
+     "key": "churnPct",
+     "label_ar": "معدل الانسحاب الشهري",
+     "label_en": "Monthly churn",
+     "type": "number",
+     "required": false,
+     "unit": "%"
+    },
+    {
+     "key": "hostingCostPerUser",
+     "label_ar": "تكلفة الاستضافة للمستخدم شهريًا",
+     "label_en": "Hosting per user/month",
+     "type": "number",
+     "required": false,
+     "unit": "عملة"
+    },
+    {
+     "key": "cac",
+     "label_ar": "تكلفة الاستحواذ",
+     "label_en": "CAC",
+     "type": "number",
+     "required": false,
+     "unit": "عملة"
+    }
+   ],
+   "revenueHelper": {
+    "volumeFrom": [
+     "subscribersYear1"
+    ],
+    "volumeMultiplier": 12,
+    "priceFrom": "monthlyPrice",
+    "costFrom": "hostingCostPerUser",
+    "unit": "اشتراك شهري"
+   },
+   "suggested": {
+    "investment": [
+     {
+      "name": "تطوير المنتج (MVP)",
+      "category": "technology",
+      "usefulLife": 3
+     },
+     {
+      "name": "أجهزة الفريق",
+      "category": "equipment",
+      "usefulLife": 3
+     },
+     {
+      "name": "علامة تجارية وتسجيل",
+      "category": "license",
+      "usefulLife": 0
+     }
+    ],
+    "opex": [
+     {
+      "name": "اشتراكات سحابية وأدوات",
+      "costType": "fixed"
+     },
+     {
+      "name": "تسويق رقمي",
+      "costType": "fixed"
+     },
+     {
+      "name": "عمولات بوابات الدفع",
+      "costType": "variable_pct"
+     },
+     {
+      "name": "مقر/مساحة عمل",
+      "costType": "fixed"
+     }
+    ],
+    "staff": [
+     {
+      "role": "مطور برمجيات"
+     },
+     {
+      "role": "مصمم UI/UX"
+     },
+     {
+      "role": "مدير منتج"
+     },
+     {
+      "role": "مسؤول مبيعات"
+     },
+     {
+      "role": "دعم فني"
+     }
+    ],
+    "revenue": [
+     {
+      "name": "اشتراكات",
+      "unit": "اشتراك شهري"
+     }
+    ]
+   },
+   "kpis": [
+    "npv",
+    "irrPct",
+    "paybackYears",
+    "breakEvenRevenue",
+    "grossMarginPct",
+    "netMarginPct",
+    "roiPct",
+    "ltv",
+    "cac",
+    "churnPct"
+   ],
+   "risks": [
+    "صعوبة اكتساب العملاء",
+    "المنافسة العالمية",
+    "الأمن السيبراني",
+    "الاعتماد على كفاءات نادرة",
+    "تقلب سعر الصرف للخدمات السحابية"
+   ],
+   "reportSections": [
+    "cover",
+    "project",
+    "executive",
+    "description",
+    "market",
+    "competitors",
+    "technical",
+    "operational",
+    "management",
+    "marketing",
+    "legal",
+    "investment",
+    "opex",
+    "revenue",
+    "statements",
+    "metrics",
+    "scenarios",
+    "sensitivity",
+    "risks",
+    "implementation",
+    "recommendations",
+    "sources",
+    "assumptions",
+    "disclaimer"
+   ],
+   "dataSources": [
+    "capmas",
+    "cbe",
+    "gafi",
+    "eta",
+    "msmeda",
+    "worldbank"
+   ],
+   "validations": []
+  },
+  "sort_order": 10
+ },
+ {
+  "id": "education",
+  "sector": "services",
+  "name_ar": "المشروعات التعليمية",
+  "name_en": "Education",
+  "icon": "fa-graduation-cap",
+  "image": "idea.jpg",
+  "definition": {
+   "description_ar": "مراكز تدريب ومدارس وحضانات ومنصات تعليمية: عدد الطلاب، الفصول، المصروفات الدراسية.",
+   "fields": [
+    {
+     "key": "classrooms",
+     "label_ar": "عدد القاعات",
+     "label_en": "Classrooms",
+     "type": "number",
+     "required": true,
+     "unit": "قاعة"
+    },
+    {
+     "key": "studentsPerClass",
+     "label_ar": "الطلاب لكل قاعة",
+     "label_en": "Students per class",
+     "type": "number",
+     "required": true,
+     "unit": "طالب"
+    },
+    {
+     "key": "occupancyPct",
+     "label_ar": "نسبة الإشغال",
+     "label_en": "Occupancy",
+     "type": "number",
+     "required": true,
+     "unit": "%"
+    },
+    {
+     "key": "annualFee",
+     "label_ar": "المصروفات السنوية للطالب",
+     "label_en": "Annual fee",
+     "type": "number",
+     "required": true,
+     "unit": "عملة"
+    },
+    {
+     "key": "costPerStudent",
+     "label_ar": "تكلفة مباشرة للطالب",
+     "label_en": "Direct cost per student",
+     "type": "number",
+     "required": false,
+     "unit": "عملة"
+    }
+   ],
+   "revenueHelper": {
+    "volumeFrom": [
+     "classrooms",
+     "studentsPerClass"
+    ],
+    "volumePctFrom": "occupancyPct",
+    "priceFrom": "annualFee",
+    "costFrom": "costPerStudent",
+    "unit": "طالب"
+   },
+   "suggested": {
+    "investment": [
+     {
+      "name": "تجهيز المبنى",
+      "category": "building",
+      "usefulLife": 20
+     },
+     {
+      "name": "أثاث تعليمي",
+      "category": "furniture",
+      "usefulLife": 7
+     },
+     {
+      "name": "أجهزة ومعامل",
+      "category": "technology",
+      "usefulLife": 4
+     },
+     {
+      "name": "تراخيص تعليمية",
+      "category": "license",
+      "usefulLife": 0
+     }
+    ],
+    "opex": [
+     {
+      "name": "إيجار",
+      "costType": "fixed"
+     },
+     {
+      "name": "مرافق",
+      "costType": "fixed"
+     },
+     {
+      "name": "تسويق",
+      "costType": "fixed"
+     },
+     {
+      "name": "أنشطة ومستلزمات",
+      "costType": "variable_pct"
+     }
+    ],
+    "staff": [
+     {
+      "role": "مدير"
+     },
+     {
+      "role": "معلم/مدرب"
+     },
+     {
+      "role": "إداري"
+     },
+     {
+      "role": "عامل"
+     }
+    ],
+    "revenue": [
+     {
+      "name": "طلاب",
+      "unit": "طالب"
+     }
+    ]
+   },
+   "kpis": [
+    "npv",
+    "irrPct",
+    "paybackYears",
+    "breakEvenRevenue",
+    "grossMarginPct",
+    "netMarginPct",
+    "roiPct",
+    "revenuePerStudent"
+   ],
+   "risks": [
+    "الاشتراطات والتراخيص التعليمية",
+    "موسمية التسجيل",
+    "استقطاب كوادر مؤهلة"
+   ],
+   "reportSections": [
+    "cover",
+    "project",
+    "executive",
+    "description",
+    "market",
+    "competitors",
+    "technical",
+    "operational",
+    "management",
+    "marketing",
+    "legal",
+    "investment",
+    "opex",
+    "revenue",
+    "statements",
+    "metrics",
+    "scenarios",
+    "sensitivity",
+    "risks",
+    "implementation",
+    "recommendations",
+    "sources",
+    "assumptions",
+    "disclaimer"
+   ],
+   "dataSources": [
+    "capmas",
+    "cbe",
+    "gafi",
+    "eta",
+    "msmeda",
+    "worldbank"
+   ],
+   "validations": []
+  },
+  "sort_order": 11
+ },
+ {
+  "id": "tourism",
+  "sector": "tourism",
+  "name_ar": "المشروعات السياحية",
+  "name_en": "Tourism & hospitality",
+  "icon": "fa-umbrella-beach",
+  "image": "economic.jpg",
+  "definition": {
+   "description_ar": "فنادق وقرى ومنتجعات وأنشطة سياحية: عدد الغرف، نسبة الإشغال، متوسط سعر الليلة، الموسمية.",
+   "fields": [
+    {
+     "key": "rooms",
+     "label_ar": "عدد الغرف/الوحدات",
+     "label_en": "Rooms",
+     "type": "number",
+     "required": true,
+     "unit": "غرفة"
+    },
+    {
+     "key": "occupancyPct",
+     "label_ar": "متوسط نسبة الإشغال",
+     "label_en": "Occupancy",
+     "type": "number",
+     "required": true,
+     "unit": "%"
+    },
+    {
+     "key": "adr",
+     "label_ar": "متوسط سعر الليلة",
+     "label_en": "ADR",
+     "type": "number",
+     "required": true,
+     "unit": "عملة"
+    },
+    {
+     "key": "operatingDays",
+     "label_ar": "أيام التشغيل",
+     "label_en": "Operating days",
+     "type": "number",
+     "required": true,
+     "unit": "يوم"
+    },
+    {
+     "key": "costPerRoomNight",
+     "label_ar": "تكلفة الغرفة الليلة",
+     "label_en": "Cost per room-night",
+     "type": "number",
+     "required": false,
+     "unit": "عملة"
+    },
+    {
+     "key": "fxPricing",
+     "label_ar": "التسعير بالعملة الأجنبية؟",
+     "label_en": "Priced in FX?",
+     "type": "select",
+     "required": false,
+     "options": [
+      "لا",
+      "نعم"
+     ]
+    }
+   ],
+   "revenueHelper": {
+    "volumeFrom": [
+     "rooms",
+     "operatingDays"
+    ],
+    "volumePctFrom": "occupancyPct",
+    "priceFrom": "adr",
+    "costFrom": "costPerRoomNight",
+    "unit": "ليلة"
+   },
+   "suggested": {
+    "investment": [
+     {
+      "name": "أرض",
+      "category": "land",
+      "usefulLife": 0
+     },
+     {
+      "name": "إنشاءات",
+      "category": "building",
+      "usefulLife": 30
+     },
+     {
+      "name": "تجهيز وفرش الغرف",
+      "category": "furniture",
+      "usefulLife": 7
+     },
+     {
+      "name": "مطابخ ومعدات",
+      "category": "equipment",
+      "usefulLife": 8
+     },
+     {
+      "name": "حمامات سباحة ومرافق",
+      "category": "building",
+      "usefulLife": 15
+     },
+     {
+      "name": "تراخيص سياحية",
+      "category": "license",
+      "usefulLife": 0
+     }
+    ],
+    "opex": [
+     {
+      "name": "مرافق وطاقة",
+      "costType": "fixed"
+     },
+     {
+      "name": "عمولات منصات الحجز",
+      "costType": "variable_pct"
+     },
+     {
+      "name": "تسويق",
+      "costType": "fixed"
+     },
+     {
+      "name": "صيانة",
+      "costType": "fixed"
+     },
+     {
+      "name": "مستلزمات الضيافة",
+      "costType": "variable_pct"
+     }
+    ],
+    "staff": [
+     {
+      "role": "مدير فندق"
+     },
+     {
+      "role": "استقبال"
+     },
+     {
+      "role": "خدمة غرف"
+     },
+     {
+      "role": "طاهٍ"
+     },
+     {
+      "role": "أمن"
+     }
+    ],
+    "revenue": [
+     {
+      "name": "ليالي فندقية",
+      "unit": "ليلة"
+     }
+    ]
+   },
+   "kpis": [
+    "npv",
+    "irrPct",
+    "paybackYears",
+    "breakEvenRevenue",
+    "grossMarginPct",
+    "netMarginPct",
+    "roiPct",
+    "revpar",
+    "occupancyPct"
+   ],
+   "risks": [
+    "تذبذب الحركة السياحية",
+    "الموسمية",
+    "عمولات المنصات",
+    "الأحداث الإقليمية"
+   ],
+   "reportSections": [
+    "cover",
+    "project",
+    "executive",
+    "description",
+    "market",
+    "competitors",
+    "technical",
+    "operational",
+    "management",
+    "marketing",
+    "legal",
+    "investment",
+    "opex",
+    "revenue",
+    "statements",
+    "metrics",
+    "scenarios",
+    "sensitivity",
+    "risks",
+    "implementation",
+    "recommendations",
+    "sources",
+    "assumptions",
+    "disclaimer"
+   ],
+   "dataSources": [
+    "capmas",
+    "cbe",
+    "gafi",
+    "eta",
+    "msmeda",
+    "worldbank",
+    "tourism"
+   ],
+   "validations": []
+  },
+  "sort_order": 12
+ },
+ {
+  "id": "medical",
+  "sector": "medical",
+  "name_ar": "المشروعات الطبية",
+  "name_en": "Medical",
+  "icon": "fa-stethoscope",
+  "image": "idea.jpg",
+  "definition": {
+   "description_ar": "عيادات ومراكز أشعة ومعامل وصيدليات — ضمن حدود الاشتراطات المنظمة. الدراسة لا تغني عن الاستشارة الطبية والقانونية المتخصصة.",
+   "fields": [
+    {
+     "key": "dailyPatients",
+     "label_ar": "متوسط الحالات يوميًا",
+     "label_en": "Daily patients",
+     "type": "number",
+     "required": true,
+     "unit": "حالة"
+    },
+    {
+     "key": "workingDays",
+     "label_ar": "أيام العمل",
+     "label_en": "Working days",
+     "type": "number",
+     "required": true,
+     "unit": "يوم"
+    },
+    {
+     "key": "avgFee",
+     "label_ar": "متوسط سعر الخدمة/الكشف",
+     "label_en": "Average fee",
+     "type": "number",
+     "required": true,
+     "unit": "عملة"
+    },
+    {
+     "key": "consumablesPerCase",
+     "label_ar": "مستهلكات للحالة",
+     "label_en": "Consumables per case",
+     "type": "number",
+     "required": false,
+     "unit": "عملة"
+    },
+    {
+     "key": "insuranceSharePct",
+     "label_ar": "نسبة التعاقدات/التأمين",
+     "label_en": "Insurance share",
+     "type": "number",
+     "required": false,
+     "unit": "%"
+    }
+   ],
+   "revenueHelper": {
+    "volumeFrom": [
+     "dailyPatients",
+     "workingDays"
+    ],
+    "priceFrom": "avgFee",
+    "costFrom": "consumablesPerCase",
+    "unit": "حالة"
+   },
+   "suggested": {
+    "investment": [
+     {
+      "name": "أجهزة طبية",
+      "category": "equipment",
+      "usefulLife": 7
+     },
+     {
+      "name": "تجهيز وتشطيب المقر",
+      "category": "building",
+      "usefulLife": 10
+     },
+     {
+      "name": "أثاث",
+      "category": "furniture",
+      "usefulLife": 5
+     },
+     {
+      "name": "نظام إدارة طبي",
+      "category": "technology",
+      "usefulLife": 3
+     },
+     {
+      "name": "تراخيص وزارة الصحة",
+      "category": "license",
+      "usefulLife": 0
+     }
+    ],
+    "opex": [
+     {
+      "name": "إيجار",
+      "costType": "fixed"
+     },
+     {
+      "name": "صيانة أجهزة وعقود خدمة",
+      "costType": "fixed"
+     },
+     {
+      "name": "تخلص آمن من النفايات الطبية",
+      "costType": "fixed"
+     },
+     {
+      "name": "خصومات التعاقدات",
+      "costType": "variable_pct"
+     }
+    ],
+    "staff": [
+     {
+      "role": "طبيب"
+     },
+     {
+      "role": "تمريض"
+     },
+     {
+      "role": "فني"
+     },
+     {
+      "role": "استقبال"
+     }
+    ],
+    "revenue": [
+     {
+      "name": "خدمات طبية",
+      "unit": "حالة"
+     }
+    ]
+   },
+   "kpis": [
+    "npv",
+    "irrPct",
+    "paybackYears",
+    "breakEvenRevenue",
+    "grossMarginPct",
+    "netMarginPct",
+    "roiPct",
+    "revenuePerCase"
+   ],
+   "risks": [
+    "الاشتراطات التنظيمية والتراخيص",
+    "المسؤولية المهنية",
+    "تقادم الأجهزة",
+    "تأخر مستحقات شركات التأمين"
+   ],
+   "reportSections": [
+    "cover",
+    "project",
+    "executive",
+    "description",
+    "market",
+    "competitors",
+    "technical",
+    "operational",
+    "management",
+    "marketing",
+    "legal",
+    "investment",
+    "opex",
+    "revenue",
+    "statements",
+    "metrics",
+    "scenarios",
+    "sensitivity",
+    "risks",
+    "implementation",
+    "recommendations",
+    "sources",
+    "assumptions",
+    "disclaimer"
+   ],
+   "dataSources": [
+    "capmas",
+    "cbe",
+    "gafi",
+    "eta",
+    "msmeda",
+    "worldbank"
+   ],
+   "validations": []
+  },
+  "sort_order": 13
+ },
+ {
+  "id": "logistics",
+  "sector": "services",
+  "name_ar": "النقل والخدمات اللوجستية",
+  "name_en": "Transport & logistics",
+  "icon": "fa-truck",
+  "image": "economic.jpg",
+  "definition": {
+   "description_ar": "أساطيل النقل والتوزيع والتخزين: عدد المركبات، الرحلات، الكيلومترات، الوقود، الصيانة.",
+   "fields": [
+    {
+     "key": "vehicles",
+     "label_ar": "عدد المركبات",
+     "label_en": "Vehicles",
+     "type": "number",
+     "required": true,
+     "unit": "مركبة"
+    },
+    {
+     "key": "tripsPerVehicleDay",
+     "label_ar": "رحلات المركبة يوميًا",
+     "label_en": "Trips per vehicle/day",
+     "type": "number",
+     "required": true,
+     "unit": "رحلة"
+    },
+    {
+     "key": "workingDays",
+     "label_ar": "أيام التشغيل",
+     "label_en": "Working days",
+     "type": "number",
+     "required": true,
+     "unit": "يوم"
+    },
+    {
+     "key": "pricePerTrip",
+     "label_ar": "متوسط سعر الرحلة",
+     "label_en": "Price per trip",
+     "type": "number",
+     "required": true,
+     "unit": "عملة"
+    },
+    {
+     "key": "fuelCostPerTrip",
+     "label_ar": "تكلفة الوقود للرحلة",
+     "label_en": "Fuel per trip",
+     "type": "number",
+     "required": true,
+     "unit": "عملة"
+    }
+   ],
+   "revenueHelper": {
+    "volumeFrom": [
+     "vehicles",
+     "tripsPerVehicleDay",
+     "workingDays"
+    ],
+    "priceFrom": "pricePerTrip",
+    "costFrom": "fuelCostPerTrip",
+    "unit": "رحلة"
+   },
+   "suggested": {
+    "investment": [
+     {
+      "name": "مركبات وشاحنات",
+      "category": "vehicles",
+      "usefulLife": 5
+     },
+     {
+      "name": "ورشة صيانة",
+      "category": "equipment",
+      "usefulLife": 8
+     },
+     {
+      "name": "نظام تتبع GPS",
+      "category": "technology",
+      "usefulLife": 3
+     },
+     {
+      "name": "مستودع",
+      "category": "building",
+      "usefulLife": 20
+     },
+     {
+      "name": "تراخيص تشغيل",
+      "category": "license",
+      "usefulLife": 0
+     }
+    ],
+    "opex": [
+     {
+      "name": "تأمين المركبات",
+      "costType": "fixed"
+     },
+     {
+      "name": "صيانة وإطارات",
+      "costType": "fixed"
+     },
+     {
+      "name": "رسوم طرق",
+      "costType": "variable_pct"
+     },
+     {
+      "name": "مقر",
+      "costType": "fixed"
+     }
+    ],
+    "staff": [
+     {
+      "role": "مدير عمليات"
+     },
+     {
+      "role": "سائق"
+     },
+     {
+      "role": "فني صيانة"
+     },
+     {
+      "role": "منسق شحنات"
+     }
+    ],
+    "revenue": [
+     {
+      "name": "رحلات نقل",
+      "unit": "رحلة"
+     }
+    ]
+   },
+   "kpis": [
+    "npv",
+    "irrPct",
+    "paybackYears",
+    "breakEvenRevenue",
+    "grossMarginPct",
+    "netMarginPct",
+    "roiPct",
+    "revenuePerVehicle"
+   ],
+   "risks": [
+    "تقلب أسعار الوقود",
+    "حوادث الطرق",
+    "تأخر تحصيل المستحقات",
+    "تقادم الأسطول"
+   ],
+   "reportSections": [
+    "cover",
+    "project",
+    "executive",
+    "description",
+    "market",
+    "competitors",
+    "technical",
+    "operational",
+    "management",
+    "marketing",
+    "legal",
+    "investment",
+    "opex",
+    "revenue",
+    "statements",
+    "metrics",
+    "scenarios",
+    "sensitivity",
+    "risks",
+    "implementation",
+    "recommendations",
+    "sources",
+    "assumptions",
+    "disclaimer"
+   ],
+   "dataSources": [
+    "capmas",
+    "cbe",
+    "gafi",
+    "eta",
+    "msmeda",
+    "worldbank"
+   ],
+   "validations": []
+  },
+  "sort_order": 14
+ },
+ {
+  "id": "renewable",
+  "sector": "industrial",
+  "name_ar": "الطاقة المتجددة",
+  "name_en": "Renewable energy",
+  "icon": "fa-solar-panel",
+  "image": "sectors.jpg",
+  "definition": {
+   "description_ar": "محطات الطاقة الشمسية وأنظمة الطاقة: القدرة المركبة، ساعات الإشعاع، التدهور السنوي، تعريفة البيع.",
+   "fields": [
+    {
+     "key": "capacityKwp",
+     "label_ar": "القدرة المركبة",
+     "label_en": "Installed capacity",
+     "type": "number",
+     "required": true,
+     "unit": "ك.و.ذ"
+    },
+    {
+     "key": "specificYield",
+     "label_ar": "الإنتاجية السنوية لكل ك.و.ذ",
+     "label_en": "Specific yield",
+     "type": "number",
+     "required": true,
+     "unit": "ك.و.س/ك.و.ذ"
+    },
+    {
+     "key": "tariff",
+     "label_ar": "تعريفة بيع الكيلووات ساعة",
+     "label_en": "Tariff",
+     "type": "number",
+     "required": true,
+     "unit": "عملة"
+    },
+    {
+     "key": "degradationPct",
+     "label_ar": "التدهور السنوي للألواح",
+     "label_en": "Annual degradation",
+     "type": "number",
+     "required": false,
+     "unit": "%"
+    }
+   ],
+   "revenueHelper": {
+    "volumeFrom": [
+     "capacityKwp",
+     "specificYield"
+    ],
+    "priceFrom": "tariff",
+    "unit": "ك.و.س",
+    "growthFromNeg": "degradationPct"
+   },
+   "suggested": {
+    "investment": [
+     {
+      "name": "ألواح شمسية",
+      "category": "equipment",
+      "usefulLife": 25
+     },
+     {
+      "name": "محولات (Inverters)",
+      "category": "equipment",
+      "usefulLife": 10
+     },
+     {
+      "name": "هياكل وتركيبات",
+      "category": "installation",
+      "usefulLife": 25
+     },
+     {
+      "name": "أرض/حق انتفاع",
+      "category": "land",
+      "usefulLife": 0
+     },
+     {
+      "name": "ربط بالشبكة وتراخيص",
+      "category": "license",
+      "usefulLife": 0
+     }
+    ],
+    "opex": [
+     {
+      "name": "تشغيل وصيانة O&M",
+      "costType": "fixed"
+     },
+     {
+      "name": "تنظيف الألواح",
+      "costType": "fixed"
+     },
+     {
+      "name": "تأمين",
+      "costType": "fixed"
+     },
+     {
+      "name": "إيجار أرض",
+      "costType": "fixed"
+     }
+    ],
+    "staff": [
+     {
+      "role": "مهندس تشغيل"
+     },
+     {
+      "role": "فني"
+     },
+     {
+      "role": "حارس"
+     }
+    ],
+    "revenue": [
+     {
+      "name": "كهرباء مباعة",
+      "unit": "ك.و.س"
+     }
+    ]
+   },
+   "kpis": [
+    "npv",
+    "irrPct",
+    "paybackYears",
+    "breakEvenRevenue",
+    "grossMarginPct",
+    "netMarginPct",
+    "roiPct",
+    "lcoe",
+    "minDscr"
+   ],
+   "risks": [
+    "تغير التعريفة والتشريعات",
+    "سعر الصرف للمعدات المستوردة",
+    "انخفاض الإنتاجية",
+    "مخاطر الربط بالشبكة"
+   ],
+   "reportSections": [
+    "cover",
+    "project",
+    "executive",
+    "description",
+    "market",
+    "competitors",
+    "technical",
+    "operational",
+    "management",
+    "marketing",
+    "legal",
+    "investment",
+    "opex",
+    "revenue",
+    "statements",
+    "metrics",
+    "scenarios",
+    "sensitivity",
+    "risks",
+    "implementation",
+    "recommendations",
+    "sources",
+    "assumptions",
+    "disclaimer"
+   ],
+   "dataSources": [
+    "capmas",
+    "cbe",
+    "gafi",
+    "eta",
+    "msmeda",
+    "worldbank",
+    "nrea"
+   ],
+   "validations": []
+  },
+  "sort_order": 15
+ },
+ {
+  "id": "unconventional",
+  "sector": "agriculture",
+  "name_ar": "المشروعات غير التقليدية",
+  "name_en": "Unconventional projects",
+  "icon": "fa-dragon",
+  "image": "rare.jpg",
+  "definition": {
+   "description_ar": "مشروعات غير تقليدية مثل تربية الزواحف أو العقارب أو الفراخ والبط الأسود — تتطلب تراخيص خاصة ودراسة دقيقة لأسواق التصدير والاشتراطات البيئية واتفاقية CITES.",
+   "fields": [
+    {
+     "key": "headCount",
+     "label_ar": "عدد الرؤوس/الكائنات في الدورة",
+     "label_en": "Heads per cycle",
+     "type": "number",
+     "required": true,
+     "unit": "رأس"
+    },
+    {
+     "key": "cyclesPerYear",
+     "label_ar": "الدورات سنويًا",
+     "label_en": "Cycles per year",
+     "type": "number",
+     "required": true,
+     "unit": "دورة"
+    },
+    {
+     "key": "mortalityPct",
+     "label_ar": "نسبة النفوق",
+     "label_en": "Mortality",
+     "type": "number",
+     "required": true,
+     "unit": "%"
+    },
+    {
+     "key": "pricePerUnit",
+     "label_ar": "سعر بيع الوحدة/المنتج",
+     "label_en": "Price per unit",
+     "type": "number",
+     "required": true,
+     "unit": "عملة"
+    },
+    {
+     "key": "costPerUnit",
+     "label_ar": "تكلفة مباشرة للوحدة",
+     "label_en": "Direct cost per unit",
+     "type": "number",
+     "required": true,
+     "unit": "عملة"
+    },
+    {
+     "key": "exportSharePct",
+     "label_ar": "نسبة التصدير",
+     "label_en": "Export share",
+     "type": "number",
+     "required": false,
+     "unit": "%"
+    }
+   ],
+   "revenueHelper": {
+    "volumeFrom": [
+     "headCount",
+     "cyclesPerYear"
+    ],
+    "wasteFrom": "mortalityPct",
+    "priceFrom": "pricePerUnit",
+    "costFrom": "costPerUnit",
+    "unit": "وحدة"
+   },
+   "suggested": {
+    "investment": [
+     {
+      "name": "مزرعة/حظائر خاصة",
+      "category": "building",
+      "usefulLife": 15
+     },
+     {
+      "name": "تجهيزات تحكم بيئي",
+      "category": "equipment",
+      "usefulLife": 8
+     },
+     {
+      "name": "القطيع/السلالات الأم",
+      "category": "other",
+      "usefulLife": 5
+     },
+     {
+      "name": "تراخيص خاصة",
+      "category": "license",
+      "usefulLife": 0
+     }
+    ],
+    "opex": [
+     {
+      "name": "تغذية ورعاية بيطرية",
+      "costType": "variable_pct"
+     },
+     {
+      "name": "كهرباء وتحكم حراري",
+      "costType": "fixed"
+     },
+     {
+      "name": "شحن وتصدير",
+      "costType": "variable_pct"
+     },
+     {
+      "name": "تأمين وأمن",
+      "costType": "fixed"
+     }
+    ],
+    "staff": [
+     {
+      "role": "متخصص رعاية"
+     },
+     {
+      "role": "طبيب بيطري (جزئي)"
+     },
+     {
+      "role": "عامل"
+     }
+    ],
+    "revenue": [
+     {
+      "name": "منتج رئيسي",
+      "unit": "وحدة"
+     }
+    ]
+   },
+   "kpis": [
+    "npv",
+    "irrPct",
+    "paybackYears",
+    "breakEvenRevenue",
+    "grossMarginPct",
+    "netMarginPct",
+    "roiPct",
+    "mortalityPct"
+   ],
+   "risks": [
+    "الاشتراطات القانونية واتفاقية CITES",
+    "محدودية السوق المحلي",
+    "مخاطر السلامة",
+    "تقلب الطلب التصديري"
+   ],
+   "reportSections": [
+    "cover",
+    "project",
+    "executive",
+    "description",
+    "market",
+    "competitors",
+    "technical",
+    "operational",
+    "management",
+    "marketing",
+    "legal",
+    "investment",
+    "opex",
+    "revenue",
+    "statements",
+    "metrics",
+    "scenarios",
+    "sensitivity",
+    "risks",
+    "implementation",
+    "recommendations",
+    "sources",
+    "assumptions",
+    "disclaimer"
+   ],
+   "dataSources": [
+    "capmas",
+    "cbe",
+    "gafi",
+    "eta",
+    "msmeda",
+    "worldbank",
+    "fao",
+    "itc"
+   ],
+   "validations": []
+  },
+  "sort_order": 16
+ },
+ {
+  "id": "custom",
+  "sector": "custom",
+  "name_ar": "مشروع مخصص",
+  "name_en": "Custom project",
+  "icon": "fa-wand-magic-sparkles",
+  "image": "brand-poster.jpg",
+  "definition": {
+   "description_ar": "قالب مرن لأي نشاط غير مدرج. أدخل عناصر التكلفة والإيراد بحرية.",
+   "fields": [],
+   "revenueHelper": {},
+   "suggested": {
+    "investment": [],
+    "opex": [],
+    "staff": [],
+    "revenue": []
+   },
+   "kpis": [
+    "npv",
+    "irrPct",
+    "paybackYears",
+    "breakEvenRevenue",
+    "grossMarginPct",
+    "netMarginPct",
+    "roiPct",
+    "npv",
+    "irrPct"
+   ],
+   "risks": [
+    "مخاطر السوق",
+    "مخاطر التشغيل",
+    "مخاطر التمويل",
+    "المخاطر التنظيمية"
+   ],
+   "reportSections": [
+    "cover",
+    "project",
+    "executive",
+    "description",
+    "market",
+    "competitors",
+    "technical",
+    "operational",
+    "management",
+    "marketing",
+    "legal",
+    "investment",
+    "opex",
+    "revenue",
+    "statements",
+    "metrics",
+    "scenarios",
+    "sensitivity",
+    "risks",
+    "implementation",
+    "recommendations",
+    "sources",
+    "assumptions",
+    "disclaimer"
+   ],
+   "dataSources": [
+    "capmas",
+    "cbe",
+    "gafi",
+    "eta",
+    "msmeda",
+    "worldbank"
+   ],
+   "validations": []
+  },
+  "sort_order": 17
+ }
+]

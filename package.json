@@ -1,0 +1,35 @@
+{
+  "name": "webapp",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "dev:sandbox": "wrangler pages dev dist --ip 0.0.0.0 --port 3000",
+    "test": "vitest run",
+    "test:financial": "vitest run tests/financial",
+    "test:e2e": "bash tests/e2e/api-flow.sh",
+    "typecheck": "tsc --noEmit",
+    "db:migrate:local": "wrangler d1 migrations apply webapp-production --local",
+    "db:migrate:prod": "wrangler d1 migrations apply webapp-production --remote",
+    "db:reset": "rm -rf .wrangler/state/v3/d1 && npm run db:migrate:local",
+    "db:console:local": "wrangler d1 execute webapp-production --local",
+    "seed:gen": "python3 packages/templates/build.py && python3 scripts/gen_seed.py",
+    "deploy": "npm run build && wrangler pages deploy dist",
+    "clean-port": "fuser -k 3000/tcp 2>/dev/null || true"
+  },
+  "dependencies": {
+    "decimal.js": "^10.6.0",
+    "fflate": "^0.8.3",
+    "hono": "^4.13.8",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261022.1",
+    "@hono/vite-build": "^1.11.1",
+    "@hono/vite-dev-server": "^0.26.1",
+    "typescript": "^7.0.2",
+    "vite": "^8.1.4",
+    "vitest": "^5.0.5",
+    "wrangler": "^4.110.0"
+  }
+}

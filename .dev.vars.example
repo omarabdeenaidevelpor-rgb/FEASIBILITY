@@ -1,0 +1,13 @@
+APP_ENV=development
+APP_URL=http://localhost:3000
+# Comma-separated emails that become SUPER_ADMIN on registration
+ADMIN_EMAILS=admin@example.com
+# OpenAI-compatible provider (optional — app works without it)
+OPENAI_API_KEY=
+OPENAI_BASE_URL=
+# Email via Resend (optional — dev shows links on screen when missing)
+RESEND_API_KEY=
+MAIL_FROM=
+# Payments (optional): leave empty → 'dev' simulator in development, disabled in production
+PAYMENT_PROVIDER=
+PAYMENT_WEBHOOK_SECRET=

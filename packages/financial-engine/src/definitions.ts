@@ -1,0 +1,20 @@
+export const DEFINITIONS: Record<string, { ar: string; en: string; formula: string }> = {
+  totalInvestment: { ar: 'إجمالي الاستثمار', en: 'Total investment', formula: 'Σ Capex + Initial cash reserve (months × yr-1 monthly cash costs)' },
+  npv: { ar: 'صافي القيمة الحالية', en: 'Net Present Value', formula: 'NPV = Σ CF_t / (1+r)^t , t=0..H ; CF_0 negative (unlevered project FCF)' },
+  irrPct: { ar: 'معدل العائد الداخلي للمشروع', en: 'Project IRR', formula: 'r such that NPV(r)=0 (bisection on project FCF)' },
+  equityIrrPct: { ar: 'معدل العائد الداخلي لحقوق الملكية', en: 'Equity IRR', formula: 'IRR of equity cash flows (after debt service)' },
+  roiPct: { ar: 'العائد على الاستثمار (لكامل الأفق)', en: 'ROI over horizon', formula: 'Σ Net income (horizon) / Total investment × 100' },
+  avgAnnualRoiPct: { ar: 'متوسط العائد السنوي على الاستثمار', en: 'Average annual ROI', formula: 'ROI / operating years' },
+  paybackYears: { ar: 'فترة الاسترداد', en: 'Payback period', formula: 'First t where cumulative project FCF ≥ 0, linearly interpolated' },
+  discountedPaybackYears: { ar: 'فترة الاسترداد المخصومة', en: 'Discounted payback', formula: 'Same as payback on discounted FCF' },
+  breakEvenRevenue: { ar: 'إيراد التعادل (محاسبي)', en: 'Break-even revenue', formula: 'Fixed costs (incl. staff, depreciation, interest) / Contribution margin ratio — operating year 1' },
+  breakEvenUnits: { ar: 'وحدات التعادل', en: 'Break-even units', formula: 'Fixed costs / Contribution margin per unit (weighted mix, yr 1)' },
+  cashBreakEvenRevenue: { ar: 'إيراد التعادل النقدي', en: 'Cash break-even revenue', formula: '(Fixed costs − depreciation) / CM ratio' },
+  contributionMarginRatioPct: { ar: 'نسبة هامش المساهمة', en: 'Contribution margin ratio', formula: '(Net revenue − COGS − variable opex) / Net revenue' },
+  grossMarginPct: { ar: 'هامش الربح الإجمالي', en: 'Gross margin', formula: '(Net revenue − COGS) / Net revenue' },
+  operatingMarginPct: { ar: 'هامش التشغيل', en: 'Operating margin', formula: 'EBIT / Net revenue' },
+  netMarginPct: { ar: 'هامش صافي الربح', en: 'Net margin', formula: 'Net income / Net revenue' },
+  ebitdaMarginPct: { ar: 'هامش EBITDA', en: 'EBITDA margin', formula: 'EBITDA / Net revenue' },
+  minDscr: { ar: 'أدنى نسبة تغطية خدمة الدين', en: 'Minimum DSCR', formula: '(EBITDA − tax) / (interest + principal)' },
+  profitabilityIndex: { ar: 'مؤشر الربحية', en: 'Profitability index', formula: 'PV(future FCF) / |CF_0|' }
+}
